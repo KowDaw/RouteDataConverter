@@ -20,13 +20,12 @@ function createNewBusRouteObject(busRoute: any[], departureTimes: string[][], wa
 
   const busName: string = busRoute[0];
   const busStops: string[] = busRoute[1];
-  const indexOfStartTerminus: number = wayDirection === WayDirections.Forward ? 0 : busRoute[2]; // 3
-  const indexOfEndTerminus: number = wayDirection === WayDirections.Forward ? busRoute[2] : 0; // 0
+  const indexOfStartTerminus: number = wayDirection === WayDirections.Forward ? 0 : busRoute[2];
+  const indexOfEndTerminus: number = wayDirection === WayDirections.Forward ? busRoute[2] : 0;
 
   newBusRoute["bus name"] = busName;
   newBusRoute["start terminus"] = createBusStopObject(busStops[indexOfStartTerminus], departureTimes[indexOfStartTerminus]);
 
-  // For cicle datas
   const index: number = wayDirection === WayDirections.Forward ? 1 : indexOfStartTerminus + 1;
   const condition: number = wayDirection === WayDirections.Forward ? busStops.length - (indexOfEndTerminus + 1) : busStops.length - 1;
   let busStopCounter: number = 0;
